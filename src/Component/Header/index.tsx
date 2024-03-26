@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { Box, Flex, Text, Button } from "@chakra-ui/react";
+import { useAuth0 } from "@auth0/auth0-react";
 
 const MenuItem = (props: any) => {
   const { children, isLast, to = "/", ...rest } = props;
@@ -16,6 +17,7 @@ const MenuItem = (props: any) => {
 };
 
 const Header = (props: any) => {
+  const { logout } = useAuth0();
   return (
     <Flex
       as="nav"
@@ -45,6 +47,7 @@ const Header = (props: any) => {
             <Button
               size="sm"
               rounded="md"
+              onClick={() => logout({})}
               _hover={{
                 bg: [
                   "primary.100",
